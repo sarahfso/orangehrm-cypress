@@ -13,7 +13,7 @@ Cypress.Commands.add('login', (username, password) => {
 
 Cypress.Commands.add('selectNavItemByLabel', (label) => {
     cy.contains('span', label).click();
-    cy.url().should('include', '/pim/viewEmployeeList');;
+    cy.url().should('include', '/pim/viewEmployeeList');
 })
 
 Cypress.Commands.add('selectInputByLabel', (label) => {

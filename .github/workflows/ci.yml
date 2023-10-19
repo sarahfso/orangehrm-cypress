@@ -8,8 +8,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Cypress Run
         uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
       - name: Merge results
         run: npm run report:merge
       - name: Generate results
