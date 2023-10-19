@@ -1,0 +1,22 @@
+name: e2e-tests
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6
+        with:
+          env: true
+          browser: chrome
+      - name: Merge results
+        run: npm run report:merge
+      - name: Generate results
+        run: npm run report:generate
+      - name: Deploy reports page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
