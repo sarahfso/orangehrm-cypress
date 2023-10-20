@@ -1,7 +1,7 @@
 {
   "name": "orangehrm-automation",
   "version": "1.0.0",
-  "description": "",
+  "description": "automation project",
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open --config watchForFileChanges=false",
@@ -9,7 +9,7 @@
     "report:merge": "mochawesome-merge cypress/results/json/* > index.json",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   },
-  "author": "",
+  "author": "github.com/sarahfso",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",
