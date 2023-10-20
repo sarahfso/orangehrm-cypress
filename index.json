@@ -1,24 +1,24 @@
 {
   "stats": {
-    "suites": 2,
-    "tests": 4,
-    "passes": 4,
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
     "pending": 0,
     "failures": 0,
-    "testsRegistered": 4,
+    "testsRegistered": 2,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2023-10-20T04:29:28.904Z",
-    "end": "2023-10-20T17:14:41.562Z",
-    "duration": 45912658
+    "start": "2023-10-20T18:32:03.502Z",
+    "end": "2023-10-20T18:32:37.554Z",
+    "duration": 34052
   },
   "results": [
     {
-      "uuid": "f110fe2c-794a-4695-a444-8ea547c54184",
+      "uuid": "69a548b9-0b16-47d8-b037-ec568ff76981",
       "title": "",
       "fullFile": "cypress\\e2e\\pim.cy.js",
       "file": "cypress\\e2e\\pim.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "574623e1-a04c-4de0-aff5-3ce6790133a9",
+          "uuid": "448052e3-f342-47ac-95a6-b118071e674f",
           "title": "PIM",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "preenche os dados de um novo empregado e submete ao cadastro",
               "fullTitle": "PIM preenche os dados de um novo empregado e submete ao cadastro",
               "timedOut": null,
-              "duration": 26585,
+              "duration": 24420,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": "\"videos/pim.cy.js.mp4\"",
               "code": "// Clica no botão Adicionar\ncy.contains('button', 'Add').should('be.visible').click();\n// Valida se foi redirecionado\ncy.shouldRedirect('/pim/addEmployee');\n// Preenche os campos \ncy.get('input[placeholder=\"First Name\"]').should('be.visible').type(_employee.employee.firstName, {\n  force: true\n});\ncy.get('input[placeholder=\"Middle Name\"]').should('be.visible').type(_employee.employee.middleName, {\n  force: true\n});\ncy.get('input[placeholder=\"Last Name\"]').should('be.visible').type(_employee.employee.lastName, {\n  force: true\n});\n// Verifica se o Employee Id já existe\ncy.get('.oxd-input-field-error-message').if('contain', 'Employee Id already exists').selectInputByLabel('Employee Id').clear().type(Math.floor(Math.random() * 10000));\n// Guarda o valor de Employee Id\ncy.selectInputByLabel('Employee Id').invoke('val').then(value => {\n  employeeId = value;\n});\n// Upload da imagem do perfil\ncy.get('.orangehrm-employee-image input').selectFile('cypress/fixtures/image.png', {\n  force: true\n});\n// Valida upload\ncy.get('img.employee-image').should('not.contain', '/web/images/default-photo.png');\n// Escolhe Criar Detalhes de Login\ncy.get('input[type=\"checkbox\"]').if('not.checked').check({\n  force: true\n});\n// Preenche os novos campos\ncy.selectInputByLabel('Username').type(_employee.employee.userName);\ncy.selectInputByLabel('Password').type(_employee.employee.password);\ncy.selectInputByLabel('Confirm Password').type(_employee.employee.password);\n// Submete\ncy.get('button[type=\"submit\"]').should('be.visible').click();\n// Valida mensagem de sucesso\ncy.get('div.oxd-toast-content--success').as('sucessAlert').should('exist');\n// Valida se foi redirecionado\ncy.shouldRedirect('/pim/viewPersonalDetails');\n// Valida os valores cadastrados\ncy.get('input[placeholder=\"First Name\"]').should('have.value', _employee.employee.firstName);\ncy.get('input[placeholder=\"Middle Name\"]').should('have.value', _employee.employee.middleName);\ncy.get('input[placeholder=\"Last Name\"]').should('have.value', _employee.employee.lastName);",
               "err": {},
-              "uuid": "90ed71d2-7c9e-4a6a-97da-f152040ab08d",
-              "parentUUID": "574623e1-a04c-4de0-aff5-3ce6790133a9",
+              "uuid": "8eefbe67-c46a-476c-9103-ceb0f25746d6",
+              "parentUUID": "448052e3-f342-47ac-95a6-b118071e674f",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "pesquisa pelo id do empregado cadastrado e valida os dados",
               "fullTitle": "PIM pesquisa pelo id do empregado cadastrado e valida os dados",
               "timedOut": null,
-              "duration": 8243,
+              "duration": 8840,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -65,98 +65,21 @@
               "context": "\"videos/pim.cy.js.mp4\"",
               "code": "let fullName = `${_employee.employee.firstName} ${_employee.employee.middleName} ${_employee.employee.lastName}`;\n// Preenche os campos\ncy.selectInputByLabel('Employee Name').type(fullName);\ncy.selectInputByLabel('Employee Id').type(employeeId);\n// Submete\ncy.get('button[type=\"submit\"]').should('be.visible').click();\n// Valida se há apenas 1 resultado\ncy.get('div.oxd-table-body').as('searchResults').children().should('have.length', 1);\n// Clica em editar\ncy.get('@searchResults').find('button').last().click();\n// Valida se foi redirecionado\ncy.shouldRedirect('/pim/viewPersonalDetails');\n// Valida os valores cadastrados\ncy.get('input[placeholder=\"First Name\"]').should('have.value', _employee.employee.firstName);\ncy.get('input[placeholder=\"Middle Name\"]').should('have.value', _employee.employee.middleName);\ncy.get('input[placeholder=\"Last Name\"]').should('have.value', _employee.employee.lastName);",
               "err": {},
-              "uuid": "50050ba1-36f6-4db3-821b-7e9677848052",
-              "parentUUID": "574623e1-a04c-4de0-aff5-3ce6790133a9",
+              "uuid": "7ae2b276-0930-4599-a23e-807fb2101cc9",
+              "parentUUID": "448052e3-f342-47ac-95a6-b118071e674f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "90ed71d2-7c9e-4a6a-97da-f152040ab08d",
-            "50050ba1-36f6-4db3-821b-7e9677848052"
+            "8eefbe67-c46a-476c-9103-ceb0f25746d6",
+            "7ae2b276-0930-4599-a23e-807fb2101cc9"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 34828,
-          "root": false,
-          "rootEmpty": false,
-          "_timeout": 2000
-        }
-      ],
-      "passes": [],
-      "failures": [],
-      "pending": [],
-      "skipped": [],
-      "duration": 0,
-      "root": true,
-      "rootEmpty": true,
-      "_timeout": 2000
-    },
-    {
-      "uuid": "5a92ffdd-10fd-45ce-8ecf-224baa2117b4",
-      "title": "",
-      "fullFile": "cypress\\e2e\\pim.cy.js",
-      "file": "cypress\\e2e\\pim.cy.js",
-      "beforeHooks": [],
-      "afterHooks": [],
-      "tests": [],
-      "suites": [
-        {
-          "uuid": "94d57cfa-3a2c-4e4a-847c-05b615c97312",
-          "title": "PIM",
-          "fullFile": "",
-          "file": "",
-          "beforeHooks": [],
-          "afterHooks": [],
-          "tests": [
-            {
-              "title": "preenche os dados de um novo empregado e submete ao cadastro",
-              "fullTitle": "PIM preenche os dados de um novo empregado e submete ao cadastro",
-              "timedOut": null,
-              "duration": 24922,
-              "state": "passed",
-              "speed": "slow",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": "\"videos/pim.cy.js.mp4\"",
-              "code": "cy.contains('button', 'Add').should('be.visible').click();\ncy.url().should('include', '/pim/addEmployee');\ncy.get('input[placeholder=\"First Name\"]').should('be.visible').type(_employee.employee.firstName, {\n  force: true\n});\ncy.get('input[placeholder=\"Middle Name\"]').should('be.visible').type(_employee.employee.middleName, {\n  force: true\n});\ncy.get('input[placeholder=\"Last Name\"]').should('be.visible').type(_employee.employee.lastName, {\n  force: true\n});\ncy.selectInputByLabel('Employee Id').invoke('val').then(value => {\n  employeeId = value;\n});\ncy.get('.orangehrm-employee-image input').selectFile('cypress/fixtures/image.png', {\n  force: true\n});\ncy.get('img.employee-image').should('not.contain', '/web/images/default-photo.png');\ncy.get('input[type=\"checkbox\"]').if('not.checked').check({\n  force: true\n});\ncy.selectInputByLabel('Username').type(_employee.employee.userName);\ncy.selectInputByLabel('Password').type(_employee.employee.password);\ncy.selectInputByLabel('Confirm Password').type(_employee.employee.password);\ncy.get('button[type=\"submit\"]').should('be.visible').click();\ncy.get('div.oxd-toast-content--success').as('sucessAlert').should('exist');\ncy.url().should('include', '/pim/viewPersonalDetails');\ncy.get('input[placeholder=\"First Name\"]').should('have.value', _employee.employee.firstName);\ncy.get('input[placeholder=\"Middle Name\"]').should('have.value', _employee.employee.middleName);\ncy.get('input[placeholder=\"Last Name\"]').should('have.value', _employee.employee.lastName);",
-              "err": {},
-              "uuid": "fd74d8fb-c5a1-4b2c-b1d7-d9004b8c78ea",
-              "parentUUID": "94d57cfa-3a2c-4e4a-847c-05b615c97312",
-              "isHook": false,
-              "skipped": false
-            },
-            {
-              "title": "pesquisa pelo id do empregado cadastrado e valida os dados",
-              "fullTitle": "PIM pesquisa pelo id do empregado cadastrado e valida os dados",
-              "timedOut": null,
-              "duration": 7491,
-              "state": "passed",
-              "speed": "medium",
-              "pass": true,
-              "fail": false,
-              "pending": false,
-              "context": "\"videos/pim.cy.js.mp4\"",
-              "code": "let fullName = `${_employee.employee.firstName} ${_employee.employee.middleName} ${_employee.employee.lastName}`;\ncy.selectInputByLabel('Employee Name').type(fullName);\ncy.selectInputByLabel('Employee Id').type(employeeId);\ncy.get('button[type=\"submit\"]').should('be.visible').click();\ncy.get('div.oxd-table-body').as('searchResults').children().should('have.length', 1);\ncy.get('@searchResults').find('button').last().click();\ncy.url().should('include', '/pim/viewPersonalDetails');\ncy.get('input[placeholder=\"First Name\"]').should('have.value', _employee.employee.firstName);\ncy.get('input[placeholder=\"Middle Name\"]').should('have.value', _employee.employee.middleName);\ncy.get('input[placeholder=\"Last Name\"]').should('have.value', _employee.employee.lastName);",
-              "err": {},
-              "uuid": "c2ac68f9-3551-438a-a0b9-56b2d3ee8a2d",
-              "parentUUID": "94d57cfa-3a2c-4e4a-847c-05b615c97312",
-              "isHook": false,
-              "skipped": false
-            }
-          ],
-          "suites": [],
-          "passes": [
-            "fd74d8fb-c5a1-4b2c-b1d7-d9004b8c78ea",
-            "c2ac68f9-3551-438a-a0b9-56b2d3ee8a2d"
-          ],
-          "failures": [],
-          "pending": [],
-          "skipped": [],
-          "duration": 32413,
+          "duration": 33260,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -193,7 +116,7 @@
         "id": "default",
         "reportDir": "cypress/results/json",
         "quiet": true,
-        "overwrite": false,
+        "overwrite": true,
         "html": false,
         "json": true
       },

@@ -4,8 +4,8 @@
   "description": "automation project",
   "main": "index.js",
   "scripts": {
-    "cy:open": "npx cypress open --config watchForFileChanges=false",
-    "cy:run": "npx cypress run --browser chrome --headless",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
     "report:merge": "mochawesome-merge cypress/results/json/* > index.json",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   },
