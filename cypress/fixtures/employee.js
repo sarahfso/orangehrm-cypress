@@ -5,7 +5,6 @@ export const employee = {
     middleName: faker.person.middleName(),
     lastName: faker.person.lastName(),
 
-
     userName: faker.internet.userName(),
     password: faker.internet.password()
 
